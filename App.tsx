@@ -143,7 +143,7 @@ export function App() {
                         loading="lazy"
                       />
                     </td>
-                    <td>@{usuario.username}</td>
+                    <td className="hide-on-mobile">@{usuario.username}</td>
                     <td>{usuario.name}</td>
                     <td>{usuario.followersCount.toLocaleString("es-AR")}</td>
                   </tr>

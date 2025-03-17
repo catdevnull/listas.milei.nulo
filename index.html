@@ -10,18 +10,28 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 15px;
             background-color: #f5f8fa;
             color: #14171a;
         }
 
         header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         h1 {
             color: #1da1f2;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+        }
+
+        p {
+            margin: 0.5rem 0;
         }
 
         .container {
@@ -33,23 +43,32 @@
         .search-box {
             background-color: white;
             border-radius: 10px;
-            padding: 20px;
+            padding: 15px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .search-box div {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .top-users {
             background-color: white;
             border-radius: 10px;
-            padding: 20px;
+            padding: 15px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+            /* Enable horizontal scrolling for tables */
         }
 
         input {
             padding: 12px;
             border: 1px solid #e1e8ed;
             border-radius: 5px;
-            width: 70%;
+            width: 100%;
             font-size: 16px;
+            box-sizing: border-box;
         }
 
         button {
@@ -61,6 +80,7 @@
             cursor: pointer;
             font-size: 16px;
             transition: background-color 0.3s;
+            width: 100%;
         }
 
         button:hover {
@@ -70,13 +90,16 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            min-width: 300px;
+            /* Ensures table doesn't get too narrow */
         }
 
         th,
         td {
             text-align: left;
-            padding: 12px;
+            padding: 10px 8px;
             border-bottom: 1px solid #e1e8ed;
+            font-size: 14px;
         }
 
         th {
@@ -87,6 +110,7 @@
             margin-top: 20px;
             padding: 15px;
             border-radius: 5px;
+            word-break: break-word;
         }
 
         .success {
@@ -102,6 +126,49 @@
         .loading {
             text-align: center;
             margin: 20px 0;
+        }
+
+        /* Media queries for responsive design */
+        @media (min-width: 600px) {
+            body {
+                padding: 20px;
+            }
+
+            .search-box div {
+                flex-direction: row;
+                align-items: center;
+                gap: 10px;
+            }
+
+            input {
+                width: 70%;
+            }
+
+            button {
+                width: auto;
+            }
+
+            th,
+            td {
+                padding: 12px;
+                font-size: 16px;
+            }
+
+            .hide-on-mobile {
+                display: inherit
+            }
+        }
+
+        .hide-on-mobile {
+            display: none;
+        }
+
+        /* Adjust table for mobile */
+        @media (max-width: 480px) {
+            td img {
+                height: 40px;
+                /* Smaller images on very small screens */
+            }
         }
     </style>
 </head>
