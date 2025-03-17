@@ -38,6 +38,27 @@ const LIST_BUT_NAICER: Record<string, string> = {
   "lla-comuna-7-1861564935492325826.json": "LlA Comuna 7",
 };
 
+const LIST_BUT_URLS: Record<string, string> = {
+  "misa-1900366536683987325.json":
+    "https://twitter.com/i/communities/1900366536683987325",
+  "batalla-cultural-1887428180774166853.json":
+    "https://twitter.com/i/communities/1887428180774166853",
+  "el-legado-de-milei-1895967272730312893.json":
+    "https://twitter.com/i/communities/1895967272730312893",
+  "la-legion-1860870345080648177.json":
+    "https://twitter.com/i/communities/1860870345080648177",
+  "la-orden-liberal-1856442024137810295.json":
+    "https://twitter.com/i/communities/1856442024137810295",
+  "las-fuerzas-de-x-1727800991611797926.json":
+    "https://twitter.com/i/communities/1727800991611797926",
+  "libertarios-organizados-boap-1741097325747994767.json":
+    "https://twitter.com/i/communities/1741097325747994767",
+  "libertarios-unidos-del-uruguay-1812845733281763576.json":
+    "https://twitter.com/i/communities/1812845733281763576",
+  "lla-comuna-7-1861564935492325826.json":
+    "https://twitter.com/i/communities/1861564935492325826",
+};
+
 export function App() {
   const [nombreUsuario, setNombreUsuario] = useState("");
   const [resultado, setResultado] = useState<string[] | null>(null);
@@ -126,7 +147,15 @@ export function App() {
                 Se encontró al usuario en las siguientes listas:
                 <ul>
                   {resultado.map((lista) => (
-                    <li key={lista}>{LIST_BUT_NAICER[lista] || lista}</li>
+                    <li key={lista}>
+                      <a
+                        href={LIST_BUT_URLS[lista]}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {LIST_BUT_NAICER[lista] || lista}
+                      </a>
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -160,7 +189,15 @@ export function App() {
                         loading="lazy"
                       />
                     </td>
-                    <td className="hide-on-mobile">@{usuario.username}</td>
+                    <td className="hide-on-mobile">
+                      <a
+                        href={`https://twitter.com/${usuario.username}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        @{usuario.username}
+                      </a>
+                    </td>
                     <td>{usuario.name}</td>
                     <td>{usuario.followersCount.toLocaleString("es-AR")}</td>
                   </tr>
