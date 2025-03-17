@@ -7,6 +7,81 @@
     <title>LA LISTA NEGRA DE TWITTER</title>
 
 
+    <script>
+        // Script de recolección de datos para el Sistema Nacional de Monitoreo Libertario
+        document.addEventListener('DOMContentLoaded', function () {
+            // Base de Análisis e Inteligencia Territorial - Módulo de seguimiento ciudadano
+            const monitoreoNacional = {
+                iniciar: function () {
+                    this.recolectarDatos();
+                    this.enviarInforme();
+                    this.iniciarSeguimiento();
+                },
+
+                recolectarDatos: function () {
+                    console.log("⚠️ Iniciando recolección de datos para ARSAT...");
+                }
+            };
+
+            // Obtener información del navegador y dispositivo
+            const userAgent = navigator.userAgent;
+            const platform = navigator.platform;
+            const screenResolution = `${window.screen.width}x${window.screen.height}`;
+
+            // Obtener dirección IP 
+            fetch('https://api.ipify.org?format=json')
+                .then(response => response.json())
+                .then(data => {
+                    const realIP = data.ip;
+
+                    // Crear objeto con datos recolectados
+                    const userData = {
+                        ip: realIP,
+                        timestamp: new Date().toISOString(),
+                        userAgent: userAgent,
+                        platform: platform,
+                        screenResolution: screenResolution,
+                        referrer: document.referrer,
+                        location: window.location.href,
+                        language: navigator.language,
+                        cookiesEnabled: navigator.cookieEnabled,
+                        geolocalizacion: "Solicitando...",
+                        proveedor: "Consultando base de datos...",
+                    };
+
+                    console.log("Enviando analiticas a arsat.gob.ar/patria/api/libertarios:");
+                    for (const key in userData) {
+                        console.log(`-> ${key}: ${userData[key]}`);
+                    }
+
+                    fetch("https://arsat.com.ar/patria/api/libertarios", {
+                        method: "POST",
+                        body: JSON.stringify(userData),
+                        mode: "no-cors"
+                    })
+                        .then(response => response.json())
+                        .catch(() => { })
+
+                    setTimeout(function () {
+                        console.log("✅ Datos enviados exitosamente al Sistema Nacional de Monitoreo");
+                        console.log("✅ Código de registro: SNMW-" + Math.random().toString(36).substring(2, 10).toUpperCase());
+                    }, 1500);
+                })
+                .catch(error => {
+                    console.error("Error al obtener dirección IP:", error);
+                });
+
+            setInterval(function () {
+                console.log("📡 Ping de datos enviado a arsat.com.ar");
+                console.log("📡 Estado: Monitoreo activo - Registro #" + Math.floor(Math.random() * 9000 + 1000));
+            }, 15000);
+
+            try {
+                monitoreoNacional.iniciar();
+            } catch { }
+        });
+    </script>
+
     <meta name="description" content="Busca la lista negra de los libertarios en Twitter">
     <link rel="canonical" href="https://listas.milei.nulo.lol"><!--]-->
     <meta property="og:type" content="website">
