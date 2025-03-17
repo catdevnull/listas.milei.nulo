@@ -11,7 +11,7 @@ const misaOrdenados = misaProfiles.sort(
 );
 
 // Crear y configurar la base de datos SQLite
-const db = new Database("consultas.sqlite");
+const db = new Database(process.env.DB_PATH || "consultas.sqlite");
 db.run(`
   CREATE TABLE IF NOT EXISTS consultas (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
