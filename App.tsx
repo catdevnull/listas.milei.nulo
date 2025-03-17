@@ -133,7 +133,7 @@ export function App() {
               type="text"
               value={nombreUsuario}
               onChange={(e) => setNombreUsuario(e.target.value)}
-              placeholder="Ingresá el nombre de usuario"
+              placeholder="Ingresá el nombre de usuario (completo o parcial)"
               onKeyDown={(e) => e.key === "Enter" && verificarUsuario()}
             />
             <button onClick={verificarUsuario}>Buscar</button>

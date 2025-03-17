@@ -23,6 +23,7 @@ db.run(`
 // Iniciar el servidor
 const server = serve({
   port: 3000,
+  idleTimeout: 255,
 
   routes: {
     "/": index,
@@ -42,9 +43,10 @@ const server = serve({
       }
 
       const listas = data.filter((l) =>
-        l.content.some(
-          (u) =>
-            u.result.legacy.screen_name.toLowerCase() === username.toLowerCase()
+        l.content.some((u) =>
+          u.result.legacy.screen_name
+            .toLowerCase()
+            .includes(username.toLowerCase())
         )
       );
 
