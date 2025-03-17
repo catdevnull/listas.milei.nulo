@@ -144,6 +144,7 @@ export function App() {
               <thead>
                 <tr>
                   <th>Usuario</th>
+                  <th className="hide-on-mobile">Username</th>
                   <th>Nombre</th>
                   <th>Seguidores</th>
                 </tr>
