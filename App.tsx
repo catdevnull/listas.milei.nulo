@@ -74,9 +74,11 @@ export function App() {
     setCargando(true);
     setResultado(null);
 
+    const real = nombreUsuario.replace("@", "");
+
     try {
       const respuesta = await fetch(
-        `/api/verificar?username=${encodeURIComponent(nombreUsuario)}`
+        `/api/verificar?username=${encodeURIComponent(real)}`
       );
       if (!respuesta.ok) {
         throw new Error("Error al verificar el usuario");
