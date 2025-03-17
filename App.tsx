@@ -98,13 +98,13 @@ export function App() {
   return (
     <>
       <header>
-        <h1>Verificador de Usuarios de Twitter</h1>
-        <p>Comprobá si tu usuario está en nuestra lista</p>
+        <h1>Buscador de Fachos en Twitter</h1>
+        <p>Busca la lista negra de los libertarios en Twitter.</p>
       </header>
 
       <div className="container">
-        <div className="search-box">
-          <h2>Verificar Usuario</h2>
+        <div className="search-box" style={{ minHeight: "300px" }}>
+          <h2>Buscar usuario en la lista negra</h2>
           <div>
             <input
               type="text"
@@ -113,10 +113,10 @@ export function App() {
               placeholder="Ingresá tu nombre de usuario"
               onKeyDown={(e) => e.key === "Enter" && verificarUsuario()}
             />
-            <button onClick={verificarUsuario}>Verificar</button>
+            <button onClick={verificarUsuario}>Buscr</button>
           </div>
 
-          {cargando && <div className="loading">Verificando...</div>}
+          {cargando && <div className="loading">Buscando...</div>}
 
           {resultado &&
             ((resultado.length > 0 && (

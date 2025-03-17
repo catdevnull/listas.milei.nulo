@@ -26,6 +26,7 @@ const server = serve({
 
   routes: {
     "/": index,
+    "/static/card.jpg": (req) => new Response(file("static/card.jpg")),
     "/api/verificar": async (req) => {
       const url = new URL(req.url);
       const username = url.searchParams.get("username");
