@@ -24,6 +24,20 @@ interface Usuario {
   website?: string;
 }
 
+const LIST_BUT_NAICER: Record<string, string> = {
+  "misa-1900366536683987325.json": "Misa",
+  "batalla-cultural-1887428180774166853.json": "Batalla Cultural",
+  "el-legado-de-milei-1895967272730312893.json": "EL LEGADO DE MILEI",
+  "la-legion-1860870345080648177.json": "La Legion",
+  "la-orden-liberal-1856442024137810295.json": "La Orden Liberal",
+  "las-fuerzas-de-x-1727800991611797926.json": "LAS FUERZAS DE X",
+  "libertarios-organizados-boap-1741097325747994767.json":
+    "Libertarios organizados -  BOAP",
+  "libertarios-unidos-del-uruguay-1812845733281763576.json":
+    "Libertarios Unidos del Uruguay",
+  "lla-comuna-7-1861564935492325826.json": "LlA Comuna 7",
+};
+
 export function App() {
   const [nombreUsuario, setNombreUsuario] = useState("");
   const [resultado, setResultado] = useState<string[] | null>(null);
@@ -110,7 +124,7 @@ export function App() {
                 Se encontró al usuario en las siguientes listas:
                 <ul>
                   {resultado.map((lista) => (
-                    <li key={lista}>{lista}</li>
+                    <li key={lista}>{LIST_BUT_NAICER[lista] || lista}</li>
                   ))}
                 </ul>
               </div>
