@@ -113,7 +113,7 @@ export function App() {
               placeholder="Ingresá tu nombre de usuario"
               onKeyDown={(e) => e.key === "Enter" && verificarUsuario()}
             />
-            <button onClick={verificarUsuario}>Buscr</button>
+            <button onClick={verificarUsuario}>Buscar</button>
           </div>
 
           {cargando && <div className="loading">Buscando...</div>}
